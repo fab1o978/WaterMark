@@ -174,7 +174,10 @@ public class ImageWaterMarkView extends ImageView implements IWaterMarkMethod {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         if (bitmapWidth != 0 && bitmapHeight != 0) {
+            // Set width to screen width
             int screenWdith = DensityUtil.getScreenSize(getContext()).x;
+            // Set width to ImageView width
+            int screenWidth = MeasureSpec.getSize(widthMeasureSpec);
             int imgHeight = (screenWdith * bitmapHeight) / bitmapWidth;
             super.onMeasure(MeasureSpec.makeMeasureSpec(screenWdith, MeasureSpec.EXACTLY), MeasureSpec.makeMeasureSpec(imgHeight, MeasureSpec.EXACTLY));
         } else {
